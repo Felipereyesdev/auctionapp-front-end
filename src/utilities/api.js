@@ -30,3 +30,39 @@ const API_BASE_URL =
     const url = new URL(`${API_BASE_URL}/properties`);
     return await fetchJson(url, { headers, signal }, [])
   }
+
+  export async function updatepropertytobuy( property_Id, signal) {
+    const url = `${API_BASE_URL}/properties/${property_Id}`;
+    const options = {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({ data: {status: 'buy'} }),
+      signal,
+    };
+    let result = await fetchJson(url, options, {});
+    return result
+  }
+
+  export async function updatepropertytonobuy( property_Id, signal) {
+    const url = `${API_BASE_URL}/properties/${property_Id}`;
+    const options = {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({ data: {status: 'notbuy'} }),
+      signal,
+    };
+    let result = await fetchJson(url, options, {});
+    return result
+  }
+
+  export async function updatepropertytomaybe( property_Id, signal) {
+    const url = `${API_BASE_URL}/properties/${property_Id}`;
+    const options = {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({ data: {status: 'maybe'} }),
+      signal,
+    };
+    let result = await fetchJson(url, options, {});
+    return result
+  }
